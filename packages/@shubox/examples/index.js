@@ -1,8 +1,20 @@
 import Shubox from 'shubox'
 
 const avatar = new Shubox('#avatar', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   previewsContainer: false,
+  s3Key: 'users/avatar/joel.jpg',
+  transformName: 'test-transform',
+  transformCallbacks: {
+    '200x': function(shuboxFile) {
+      console.log(shuboxFile.transforms["200x"].s3url)
+    },
+    'x100': function(shuboxFile) {
+      console.log(shuboxFile.transforms["x100"].s3url)
+    }
+  },
   success: function(file) {
     let img = new Image()
     img.onload = function() {
@@ -14,29 +26,37 @@ const avatar = new Shubox('#avatar', {
 })
 
 const githubForm = new Shubox('#shubox--textarea', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   clickable: '#shubox--click-to-upload',
   uploadingTemplate: '![Uploading {{name}}...]()',
   successTemplate: '![{{name}}]({{s3url}})',
 })
 
 const atCursor = new Shubox('#shubox--textarea--cursor', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
   clickable: null,
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   successTemplate: ' {{s3url}} ',
   textBehavior: 'insertAtCursor',
 })
 
 const append = new Shubox('#shubox--textarea--append', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
   clickable: null,
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   successTemplate: ' See? Told you. Right after --> {{s3url}}',
   textBehavior: 'append',
 })
 
 const replace = new Shubox('#shubox--textarea--replace', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
   clickable: null,
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   s3urlTemplate: 'Replaced with: {{s3url}} ',
   textBehavior: 'replace',
 })
@@ -47,7 +67,9 @@ const logEvent = function(e){
 }
 
 const events = new Shubox('#avatar-events', {
-  key: window.shuboxSandboxKey,
+  key: 'bf897b63-50f2-4055-b4f6-825e613f3d3e',
+  signatureUrl: 'http://localhost:4101/signatures',
+  uploadUrl: 'http://localhost:4101/uploads',
   previewsContainer: false,
   maxFiles: 1,
 
