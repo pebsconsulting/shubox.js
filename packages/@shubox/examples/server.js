@@ -23,6 +23,10 @@ const pages = [
     title: 'Avatar Demo',
   },
   {
+    path: '/await-generation',
+    title: 'Variant Callback',
+  },
+  {
     path: '/standalone',
     title: 'Standalone Script',
   },
